@@ -17,6 +17,7 @@ requirements:
   host:
     - python {{ python_min }}
     - pip
+    - setuptools
   run:
     - python >={{ python_min }}
     - pytest >=3.1.2
@@ -31,8 +32,7 @@ about:
   home: https://github.com/hchasestevens/fault-localization
   license: MIT
   license_family: MIT
-  # not included in the sdist: https://github.com/hchasestevens/fault-localization/pull/7
-  license_file: ''
+  license_file: 'LICENSE'
   summary: "A fault localization tool for Python's pytest testing framework."
   description: "A fault localization tool for Python's pytest testing framework."
 
