@@ -5,23 +5,26 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/f/fault-localization/fault-localization-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/f/fault-localization/fault-localization-{{ version }}.tar.gz
   sha256: 359cf68d79e4f585f72d7fb7c701f8e39295b349a21b558a63e2b633a4da394a
 
 build:
-  number: 0
+  number: 1
   script: python -m pip install . --no-deps --ignore-installed
   noarch: python
 
 requirements:
   host:
-    - python
+    - python {{ python_min }}
     - pip
+    - setuptools
   run:
-    - python
+    - python >={{ python_min }}
     - pytest >=3.1.2
 
 test:
+  requires:
+    - python {{ python_min }}
   imports:
     - fault_localization
 
@@ -29,8 +32,7 @@ about:
   home: https://github.com/hchasestevens/fault-localization
   license: MIT
   license_family: MIT
-  # not included in the sdist: https://github.com/hchasestevens/fault-localization/pull/7
-  license_file: ''
+  license_file: 'LICENSE'
   summary: "A fault localization tool for Python's pytest testing framework."
   description: "A fault localization tool for Python's pytest testing framework."
 
